@@ -1,0 +1,68 @@
+﻿@page
+@model BookRepository.Pages.BookList.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2 class="text-info">
+    <img src="~/image/Book.png" class="rounded-circle" height="50" width="50" asp-append-version="true" />
+    Share Book
+</h2>
+<span style="color:brown">
+    <b>Note:</b><br />
+    Enter the detail of Book you are want to share.<br />
+    And the phone Number on which people will contact you<br /><br />
+</span>
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Book.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Author"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.Author" class="form-control" />
+            </div>
+            <span asp-validation-for="Book.Author" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.ISBN"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.ISBN" class="form-control" />
+            </div>
+            <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Book.Phone"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.Phone" class="form-control" />
+            </div>
+            <span asp-validation-for="Book.Phone" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Share" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

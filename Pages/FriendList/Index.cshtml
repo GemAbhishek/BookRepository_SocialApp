@@ -1,0 +1,79 @@
+﻿@page
+@model BookRepository.Pages.FriendList.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-center" style="color:midnightblue">
+    <h5>Reach out anyone for <b>HELP</b>!!</h5>
+</div>
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Our Active Member</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Become Member</a>
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        <label asp-for="Friends.FirstOrDefault().Name"></label>
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
+                        <label asp-for="Friends.FirstOrDefault().Location"></label>
+                    </th>
+                    <th>
+                        <label asp-for="Friends.FirstOrDefault().Phone"></label>
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~/image/Abhi.png" class="rounded-circle" height="35" width="40" asp-append-version="true" />
+                        Abhishek Kumar
+                    </td>
+                    <td>
+                        Kolkata
+                    </td>
+                    <th>
+                        9939366302
+                    </th>
+                    <td>
+                        <button asp-page-handler="Ignor" onclick="return confirm('Hello-Hello this is admin !!')" class="btn btn-success btn-sm text-white">Admin</button>
+                    </td>
+                </tr>
+                @if (Model.Friends.Count() > 0)
+                {
+                    @foreach (var item in Model.Friends)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Location)
+                            </td>
+                            <th>
+                                @Html.DisplayFor(m => item.Phone)
+                            </th>
+                            <td>
+                                <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure to DELETE ?')" class="btn btn-danger btn-sm">Delete</button>
+                                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <p>No Active Member available only admin available -> become a Member!!.</p>
+                }
+            </table>
+        </form>
+    </div>
+</div>
+
